@@ -50,10 +50,10 @@ sudo apt-get install postgresql postgresql-contrib
 
 ## 5. Ruby y Rails
 
-Instalar Ruby 3.1.0 e instalar Ruby on Rails 7.0.4
+Instalar Ruby 3.1.3 e instalar Ruby on Rails 7.0.4
 
 ```bash
-rvm install 3.1.0
+rvm install 3.1.3
 gem install rails -v 7.0.4
 ```
 
@@ -96,18 +96,12 @@ Ojo con que la contraseña esté entre comillas simples.
 
 Para salir de la consola de postgres corre `\q`.
 
-## 8. ¡Crear proyecto!
+## 8. Iniciar Proyecto
 
-Ya tenemos todo para iniciar nuestro proyecto. Para esto, dirígete a la consola y ejecuta el siguiente comando:
-
-```bash
-rails new <nombre proyecto> --database=postgresql
-```
-
-Ahora nos movemos a nuestra carpeta del proyecto con:
+Ya tenemos todo para empezar con el proyecto. Para esto, descarga el archivo .zip en canvas, muevelo a tu directorio en Ubuntu, puedes hacerlo facilmente yendo a la consola y colocando el comando `explorer.exe .` y moviendo la carpeta dentro del directorio con tu usuario, ahora nos movemos a nuestra carpeta del proyecto con:
 
 ```bash
-cd <nombre proyecto>
+cd Proyecto-Testing-2024-1
 ```
 
 Desde este punto en adelante, en nuestra consola siempre estaremos en el directorio del proyecto.
@@ -124,69 +118,74 @@ Ahora vamos a abrir el proyecto recién creado en nuestro editor favorito. Si ti
 
 Ahora que ya tenemos los archivos del proyecto, necesitamos setear la configuración de la base de datos que ocuparemos. 
 
-Primero crea en la raiz de tu proyecto (directamente adentro de la carpeta `<nombre proyecto>`) un archivo llamado `.env`  y adentro escribe las credenciales del usuario que creaste en el paso 7:
+Primero crea en la raiz de tu proyecto (directamente adentro de la carpeta `Proyecto-Testing-2024-1`) un archivo llamado `.env`  y adentro escribe las credenciales del usuario que creaste en el paso 7:
 
 ```env
 # no se usan comillas
 DB_USER=myuser
 DB_PASSWORD=mypassword
 ```
-Recuerda cambiar myuser y mypassword por tu usuario y contraseña!
 
-## 10. .gitignore
+¡Recuerda cambiar myuser y mypassword por tu usuario y contraseña!
 
-Para evitar subir tu archivo .env a GitHub, debes agregarlo a tu archivo .gitignore. Para eso, desde la consola, corre:
+## 10. Crear y migrar base de datos
 
-```bash
-echo ".env" >> .gitignore
-```
-Tambien incluiremos la carpeta `node_modules` en el archivo `.gitignore`
-
-```bash
-echo "node_modules" >> .gitignore
-```
-
-## 11. database.yml
-
-Luego dirígete dentro de tu proyecto a `config/database.yml` y reemplaza su contenido con lo siguiente:
-
-```yaml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV["DB_USER"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
-
-development:
-  <<: *default
-  database: <nombre proyecto>_development
-
-test:
-  <<: *default
-  database: <nombre proyecto>_test
-
-production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
-```
-
-Recuerda reemplazar `<nombre proyecto>` por el nombre que elegiste para el proyecto.
-
-## 12. Crear base de datos
-
-Necesitamos una base de datos para tu app! El siguiente comando creará una por ti:
+¡Necesitamos una base de datos para el proyecto! El siguiente comando creará una por ti:
 
 ```bash
 rails db:create
+rails db:migrate
 ```
 
-## 13. ¡Correr el servidor!
+## 11. Iniciar el servidor
 
-Ahora utilizando tu consola, corre el servidor del proyecto con el siguiente comando:
+Ahora utilizando tu consola, puedes levantar el servidor correr el siguiente comando, se debería levantar en el localhost puerto ```3000```
 
 ```
 rails server
 ```
 
-Ahora que tienes el servidor corriendo, dirígete a http://localhost:3000/ y debería aparecernos el logo de Ruby on Rails.
+Usuarios de un sistema operativo distinto a windows pueden necesitar descomentar la linea en el archivo config/puma.rb:
+
+workers ENV.fetch("WEB_CONCURRENCY") { 4 }
+
+Ahora que tienes el servidor corriendo, dirígete a http://localhost:3000/ y debería aparecerte la vista inicial de la pagina.
+
+## 12. Ejecutar tests unitarios y de integracion
+
+Antes de ejecutar los tests correr
+```
+rails db:migrate RAILS_ENV=test
+```
+
+Para ejecutar los tests unitarios y de integracion de MiniTest se puede usar:
+
+```
+rails test
+```
+
+Lo anterior no incluye los tests de sistema
+
+## 13. Instalar Google Chrome
+
+Para ejecutar los tests de sistema, necesitamos un navegador, empezaremos instalando Google Chrome:
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+```
+
+Para verificar su instalacion, ejecuta:
+
+```
+google-chrome --version
+```
+
+## 14. Ejecutar tests de sistema
+
+Para ejecutar los tests de rspec que contiene a los de sistema se puede utilizar:
+
+```
+rspec
+```
+
+¡Ya estas listo!, cualquier duda sobre la instalacion la puedes hacer por las issues del repositorio.
