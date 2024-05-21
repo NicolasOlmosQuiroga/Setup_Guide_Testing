@@ -174,7 +174,7 @@ Para verificar su instalacion, ejecuta:
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version
 ```
 
-## 14. Ejecutar tests de sistema
+## 13. Ejecutar tests de sistema
 
 Para ejecutar los tests de rspec que contiene a los de sistema se puede utilizar:
 
