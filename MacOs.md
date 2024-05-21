@@ -166,7 +166,7 @@ Lo anterior no incluye los tests de sistema
 
 ## 12. Instalar Google Chrome
 
-Para ejecutar los tests de sistema, necesitamos Google Chrome, el cual lo puedes instalar del sitio oficial
+Para ejecutar los tests de sistema, necesitamos Google Chrome, el cual lo puedes instalar del sitio oficial https://www.google.com/chrome/
 
 Para verificar su instalacion, ejecuta:
 
