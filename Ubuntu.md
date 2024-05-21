@@ -106,6 +106,12 @@ cd Proyecto-Testing-2024-1
 
 Desde este punto en adelante, en nuestra consola siempre estaremos en el directorio del proyecto.
 
+Si aparecen archivos del tipo Zone.Identifier, los puedes eliminar de la siguiente manera:
+
+```
+find . -name "*:Zone.Identifier" -type f -delete
+```
+
 Y por último, corremos el siguiente comando que instalará sus dependencias del proyecto:
 
 ```bash
