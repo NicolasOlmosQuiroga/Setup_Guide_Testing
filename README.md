@@ -8,3 +8,5 @@ Cualquier error o duda que tengas, primero deberas buscar el error en internet, 
 
 - [Setup de Ubuntu](./Ubuntu.md)
 - [Setup de MacOs](./MacOs.md)
+
+Agradecimientos al equipo docente de Ingenieria de Software por permitir el uso de su guia de setup: https://github.com/IIC2143/Setup-Guides
