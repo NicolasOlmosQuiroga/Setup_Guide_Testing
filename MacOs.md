@@ -189,4 +189,4 @@ Para ejecutar los tests de rspec que contiene a los de sistema se puede utilizar
 rspec
 ```
 
-¡Ya estas listo!, cualquier duda sobre la instalacion la puedes hacer por las issues del repositorio.
+¡Ya estas listo!, cualquier duda sobre la instalacion la puedes hacer por el foro en canvas.
