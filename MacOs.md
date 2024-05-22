@@ -49,6 +49,13 @@ rvm install 3.1.3
 gem install rails -v 7.0.4
 ```
 
+En el caso de que haya un problema con el comando rvm install 3.1.3, puedes intentar usar el siguiente comando:
+
+```
+rvm install ruby-3.1.3 --with-openssl-dir=/opt/homebrew/opt/openssl@1.1
+gem install rails -v 7.0.4
+```
+
 ## 5. PostgreSQL: superuser
 
 Ahora lo último antes de iniciar el proyecto! Debemos crear un nuevo `superuser` de PostgreSQL. Para esto primero debemos iniciar un servicio de PostgreSQL, ejecutando el siguiente comando:
